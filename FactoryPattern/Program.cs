@@ -2,9 +2,24 @@
 {
     public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Console.WriteLine("Enter the amount of tires for the vehicle you want to create:");
+
+            string input = Console.ReadLine();
+
+            IVehicle vehicle;
+            
+            if (int.TryParse(input, out int tireCount))
+            {
+                vehicle = VehicleFactory.GetVehicle(tireCount);
+            }
+            else
+            {
+                vehicle = VehicleFactory.GetVehicle(input);
+            }
+            vehicle.Drive();
+            Console.ReadLine();
         }
     }
 }
